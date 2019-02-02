@@ -5,10 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +30,8 @@ public class SimpleServer {
 	 * Starts a server on a new thread.
 	 * 
 	 * @param fileName
-	 * @throws UnknownHostException 
 	 */
-	public void startServer(String fileName) throws UnknownHostException {
-		System.out.println("IPv4 address: " + InetAddress.getLocalHost().getHostAddress());
+	public void startServer(String fileName) {
 		System.out.println("Server started! Listening to requests on port " + port);
 		new Thread() {
 
