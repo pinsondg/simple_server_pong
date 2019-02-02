@@ -98,6 +98,11 @@ function updateRightPaddle() {
 function updateBall() {
   if (hitPaddle()) {
     console.log("HIT!")
+    if (ball.x < leftPaddle.x + leftPaddle.width) {
+      ball.x = leftPaddle.x + leftPaddle.width + 1
+    } else if (ball.x > rightPaddle.x) {
+      ball.x = rightPaddle.x + 11
+    }
     determineBallMovement()
   }
   if (ball.x <= 0 || ball.x + 10 >= myGameArea.gamearea.width) {

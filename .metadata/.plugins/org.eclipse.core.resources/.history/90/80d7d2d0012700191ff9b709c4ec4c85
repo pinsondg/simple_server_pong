@@ -22,7 +22,7 @@ public class Server {
 		WinnerBoard winners = setUpWinnerBoard();
 		server1.addPostEventListener(winners);
 		server1.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\layout.html");
-		server2.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\script.js");
+		server2.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\script.js");
 	}
 	
 	

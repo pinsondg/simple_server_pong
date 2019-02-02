@@ -21,8 +21,8 @@ public class Server {
 		modifyHTMLIP();
 		WinnerBoard winners = setUpWinnerBoard();
 		server1.addPostEventListener(winners);
-		server1.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\layout.html");
-		server2.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\script.js");
+		server1.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\layout.html");
+		server2.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\script.js");
 	}
 	
 	
@@ -42,7 +42,7 @@ public class Server {
 
 
 	private static void modifyHTMLIP() throws IOException {
-		File inFile = new File("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\layout.html");
+		File inFile = new File("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\layout.html");
 		BufferedReader reader = new BufferedReader(new FileReader(inFile));
 		String file = "";
 		String line = reader.readLine();
