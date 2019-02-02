@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import model.SimpleServer;
@@ -20,7 +19,6 @@ public class Server {
 	public final static String JAVASCRIPT_FILE = "src\\front_end\\script.js";
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("Use IPv4 address " + new String(findPublicIP()) + " to connect.");
 		SimpleServer server1 = new SimpleServer(8080);
 		SimpleServer server2 = new SimpleServer(80);
 		modifyHTMLIP();
@@ -58,7 +56,9 @@ public class Server {
 		reader.close();
 	    int beginIndex = file.indexOf("src=") + 4;
 	    int endIndex = file.indexOf("\"", beginIndex + 3) + 1;
-	    byte[] bytes = findPublicIP();
+	    URL publicIP = new URL("http://bot.whatismyipaddress.com");
+	    byte[] bytes = new byte[225];
+	    publicIP.openStream().read(bytes);
 	    String ip = "\"http://" + new String(bytes) + "\"";
 	    String retString = file.substring(0, beginIndex);
 	    retString += ip;
@@ -70,13 +70,5 @@ public class Server {
 	    	System.out.println("Can't write to HTML doc.");
 	    }
 	    write.close();
-	}
-
-
-	public static byte[] findPublicIP() throws MalformedURLException, IOException {
-		URL publicIP = new URL("http://bot.whatismyipaddress.com");
-	    byte[] bytes = new byte[225];
-	    publicIP.openStream().read(bytes);
-		return bytes;
 	}
 }
