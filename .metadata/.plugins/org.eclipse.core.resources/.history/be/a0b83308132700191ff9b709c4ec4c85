@@ -44,7 +44,7 @@ public class Server {
 
 
 	private static void modifyHTMLIP() throws IOException {
-		File inFile = new File(HTML_FILE);
+		File inFile = new File("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\layout.html");
 		BufferedReader reader = new BufferedReader(new FileReader(inFile));
 		String file = "";
 		String line = reader.readLine();
