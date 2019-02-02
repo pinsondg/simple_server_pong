@@ -13,7 +13,7 @@ import model.WinnerBoard;
 
 public class Server {
 	
-	public final static String SAVE_FILE_LEADERBOARD = "../leaderboard.dat";
+	public final static String SAVE_FILE_LEADERBOARD = "..\\leaderboard.dat";
 	public final static String HTML_FILE = "../src/front_end/layout.html";
 	public final static String JAVASCRIPT_FILE = "../src/front_end/script.js";
 
@@ -23,8 +23,8 @@ public class Server {
 		modifyHTMLIP();
 		WinnerBoard winners = setUpWinnerBoard();
 		server1.addPostEventListener(winners);
-		server1.startServer(HTML_FILE);
-		server2.startServer(JAVASCRIPT_FILE);
+		server1.startServer(this.HTML_FILE);
+		server2.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\src\\front_end\\script.js");
 	}
 	
 	

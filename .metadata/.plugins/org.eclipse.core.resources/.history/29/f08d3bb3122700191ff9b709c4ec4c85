@@ -13,7 +13,7 @@ import model.WinnerBoard;
 
 public class Server {
 	
-	public final static String SAVE_FILE_LEADERBOARD = "../leaderboard.dat";
+	public final static String SAVE_FILE_LEADERBOARD = "..\\leaderboard.dat";
 	public final static String HTML_FILE = "../src/front_end/layout.html";
 	public final static String JAVASCRIPT_FILE = "../src/front_end/script.js";
 
