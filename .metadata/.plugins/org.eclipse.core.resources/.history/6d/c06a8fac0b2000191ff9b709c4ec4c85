@@ -1,0 +1,52 @@
+package controller;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.InetAddress;
+
+import model.SimpleServer;
+import model.WinnerBoard;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		SimpleServer server1 = new SimpleServer(8080);
+		SimpleServer server2 = new SimpleServer(80);
+		modifyHTMLIP();
+		server1.startServer("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\layout.html");
+		server2.startServer("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\script.js");
+		WinnerBoard winnerBoard = new WinnerBoard();
+		server1.addPostEventListener(winnerBoard);
+	}
+	
+	
+	private static void modifyHTMLIP() throws IOException {
+		File inFile = new File("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\layout.html");
+		BufferedReader reader = new BufferedReader(new FileReader(inFile));
+		String file = "";
+		String line = reader.readLine();
+		while (line != null) {
+			file += line;
+			line = reader.readLine();
+		}
+		reader.close();
+	    int beginIndex = file.indexOf("src=\"") + 5;
+	    int endIndex = file.indexOf("\"", beginIndex) + 1;
+	    String ip = "\"http://" + InetAddress.getLocalHost().getHostAddress() + "\"";
+	    String retString = file.substring(0, beginIndex);
+	    retString += ip;
+	    retString += file.substring(endIndex);
+	    BufferedWriter write = new BufferedWriter(new FileWriter(inFile));
+	    if (inFile.canWrite()) {
+	    	write.write(retString);
+	    } else {
+	    	System.out.println("Can't write to HTML doc.");
+	    }
+	    write.close();
+	}
+}

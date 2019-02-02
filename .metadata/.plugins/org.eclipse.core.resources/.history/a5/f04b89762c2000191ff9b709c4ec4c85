@@ -1,0 +1,76 @@
+package model;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.LinkedList;
+
+public class WinnerBoard extends LinkedList<Winner> implements OnPostEventListener{
+
+	public final static int MAX_SIZE = 15;
+	
+	@Override
+	public void onPostEvent(PostEvent event) {
+		this.add(new Winner(event.getMessage()));
+		System.out.println("Winner added!");
+		String table = this.toHTMLTable();
+		System.out.println(table);
+		try {
+			this.writeHTMLToFile();
+			OutputStream out = event.getSocket().getOutputStream();
+			out.write("HTTP/1.1 200 OK\nContent-Type: text/html\r\n\r\n".getBytes());
+			out.write(table.getBytes());
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Override the add method to make a stack.
+	 * 
+	 * @param winner the winner to add
+	 */
+	@Override
+	public boolean add(Winner winner) {
+		if (winner != null) {
+			if(this.size() >= 15) {
+				while(this.size() >= 15) {
+					this.remove(this.size() - 1);
+				}
+			}
+			this.add(0, winner);
+		} else {
+			return false;
+		}
+		return true;
+	}
+	
+	public String toHTMLTable() {
+		String retString = "<table style=\"width:25%\">\n<tr>\n<th>Name</th>\n<th>Score</th>\n</tr>\n";
+
+		for(Winner winner : this) {
+			retString += "<tr>\n <td> " + winner.getName() + "</td>\n<td> " + winner.getScore() + "</td>\n</tr>\n";
+		}
+		return retString;
+	}
+	
+	public void writeHTMLToFile() throws IOException {
+		File file = new File("..\\table.html");
+		BufferedWriter write = new BufferedWriter(new FileWriter(file));
+		write.write("<!DOCTYPE html>\r\n" + 
+				"<html lang=\"en\" dir=\"ltr\">\r\n" + 
+				"  <head>\r\n" + 
+				"    <meta charset=\"utf-8\">\r\n" + 
+				"    <title>LeaderBoards</title>\r\n" + 
+				"  </head>\r\n" + 
+				"  <body>");
+		write.write(toHTMLTable());
+		write.write("</body>\r\n" + 
+				"</html>");
+		write.close();
+	}
+}

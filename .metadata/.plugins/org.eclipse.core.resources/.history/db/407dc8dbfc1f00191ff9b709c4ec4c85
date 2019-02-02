@@ -1,0 +1,27 @@
+package model;
+
+public class Winner {
+
+	private String name;
+	private int playerScore;
+	private int computerScore;
+	
+	public Winner(String name, int playerScore, int computerScore) {
+		this.name = name;
+		this.computerScore = computerScore;
+		this.playerScore = playerScore;
+	}
+	
+	public String toString() {
+		return name + "," + playerScore + "," + computerScore + ";";
+	}
+	
+	public boolean equals(Object other) {
+		if (other instanceof Winner) {
+			return this.name.equals(((Winner) other).name) 
+					&& this.playerScore == ((Winner)other).playerScore
+					&& this.computerScore == ((Winner)other).playerScore;
+		}
+		return false;
+	}
+}

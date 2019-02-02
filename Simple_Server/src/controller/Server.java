@@ -1,0 +1,68 @@
+package controller;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.InetAddress;
+
+import model.SimpleServer;
+import model.WinnerBoard;
+
+public class Server {
+	
+	public final static String SAVE_FILE_LEADERBOARD = "..\\leaderboard.dat";
+
+	public static void main(String[] args) throws IOException {
+		SimpleServer server1 = new SimpleServer(8080);
+		SimpleServer server2 = new SimpleServer(80);
+		modifyHTMLIP();
+		WinnerBoard winners = setUpWinnerBoard();
+		server1.addPostEventListener(winners);
+		server1.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\layout.html");
+		server2.startServer("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\script.js");
+	}
+	
+	
+	private static WinnerBoard setUpWinnerBoard() {
+		WinnerBoard retWinners = new WinnerBoard();
+		if (!retWinners.readFile(SAVE_FILE_LEADERBOARD)) {
+			File file = new File(SAVE_FILE_LEADERBOARD);
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return retWinners;
+	}
+
+
+	private static void modifyHTMLIP() throws IOException {
+		File inFile = new File("C:\\Users\\dpgra\\server\\Simple_Server\\front_end\\layout.html");
+		BufferedReader reader = new BufferedReader(new FileReader(inFile));
+		String file = "";
+		String line = reader.readLine();
+		while (line != null) {
+			file += line + "\n";
+			line = reader.readLine();
+		}
+		reader.close();
+	    int beginIndex = file.indexOf("src=") + 4;
+	    int endIndex = file.indexOf("\"", beginIndex + 3) + 1;
+	    String ip = "\"http://" + InetAddress.getLocalHost().getHostAddress() + "\"";
+	    String retString = file.substring(0, beginIndex);
+	    retString += ip;
+	    retString += file.substring(endIndex);
+	    BufferedWriter write = new BufferedWriter(new FileWriter(inFile));
+	    if (inFile.canWrite()) {
+	    	write.write(retString);
+	    } else {
+	    	System.out.println("Can't write to HTML doc.");
+	    }
+	    write.close();
+	}
+}

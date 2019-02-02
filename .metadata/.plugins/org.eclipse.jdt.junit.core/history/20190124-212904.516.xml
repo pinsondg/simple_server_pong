@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestWinnerBoard" project="Simple_Server" tests="2" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.TestWinnerBoard" incomplete="true" displayname="TestWinnerBoard" uniqueid="[engine:junit-jupiter]/[class:tests.TestWinnerBoard]">
+    <testcase name="testReadFile" classname="tests.TestWinnerBoard" incomplete="true" displayname="testReadFile()" uniqueid="[engine:junit-jupiter]/[class:tests.TestWinnerBoard]/[method:testReadFile()]"/>
+    <testcase name="testSaveToFile" classname="tests.TestWinnerBoard" incomplete="true" displayname="testSaveToFile()" uniqueid="[engine:junit-jupiter]/[class:tests.TestWinnerBoard]/[method:testSaveToFile()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,13 @@
+package controller;
+
+import java.io.IOException;
+
+import model.SimpleServer;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		SimpleServer server = new SimpleServer(8080);
+		server.startServer();
+	}
+}

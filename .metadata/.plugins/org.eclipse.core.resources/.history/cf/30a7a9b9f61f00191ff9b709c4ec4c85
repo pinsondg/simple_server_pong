@@ -1,0 +1,8 @@
+
+
+public class PostEvent {
+	
+	private String message;
+	private String fileRequest;
+	
+}

@@ -1,0 +1,12 @@
+package model;
+
+import java.util.ArrayList;
+
+public class WinnerBoard extends ArrayList<Winner> implements OnPostEventListener{
+
+	@Override
+	public void onPostEvent(PostEvent event) {
+		
+	}
+	
+}

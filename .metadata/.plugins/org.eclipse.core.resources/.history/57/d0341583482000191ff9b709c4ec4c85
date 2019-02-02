@@ -1,0 +1,32 @@
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.File;
+
+import org.junit.jupiter.api.Test;
+
+import model.Winner;
+import model.WinnerBoard;
+
+class TestWinnerBoard {
+
+	@Test
+	void testSaveToFile() {
+		WinnerBoard board = new WinnerBoard();
+		board.add(new Winner("Daniel", 10, 10));
+		board.add(new Winner("Megan", 5, 5));
+		String fileName = "..\\test.dat";
+		board.saveToFile(fileName);
+		File file = new File(fileName);
+		assertTrue(file.exists());
+		assertFalse(file.length() == 0);
+		file.delete();
+	}
+	
+	@Test
+	void testReadFile() {
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package model;
+
+import java.util.ArrayList;
+
+public class WinnerBoard extends ArrayList<Winner> implements OnPostEventListener{
+
+	@Override
+	public void onPostEvent(PostEvent event) {
+		this.add(new Winner(event.getMessage()));
+	}
+	
+	
+	public String toHTMLTable() {
+		String retString = "<table style=\"width:100%\">\n<tr>\n<th>Name</th>\n<th>Score</th>\n</tr>\n";
+
+		for(Winner winner : this) {
+			retString += "<tr>\n <td> " + winner.getName() + "</td>\n<td> " + winner.getScore() + "</td>\n</tr>\n";
+		}
+		
+	}
+}

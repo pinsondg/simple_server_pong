@@ -1,0 +1,45 @@
+package model;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class WinnerBoard extends ArrayList<Winner> implements OnPostEventListener{
+
+	@Override
+	public void onPostEvent(PostEvent event) {
+		this.add(new Winner(event.getMessage()));
+		System.out.println("Winner added!");
+		System.out.println(this.toHTMLTable());
+		writeToHTMLFile();
+	}
+	
+	
+	public String toHTMLTable() {
+		String retString = "<table style=\"width:100%\">\n<tr>\n<th>Name</th>\n<th>Score</th>\n</tr>\n";
+
+		for(Winner winner : this) {
+			retString += "<tr>\n <td> " + winner.getName() + "</td>\n<td> " + winner.getScore() + "</td>\n</tr>\n";
+		}
+		
+		return retString;
+	}
+	
+	public void writeHTMLToFile() throws IOException {
+		File file = new File("..\\..\\table.html");
+		BufferedWriter write = new BufferedWriter(new FileWriter(file));
+		write.write("<!DOCTYPE html>\r\n" + 
+				"<html lang=\"en\" dir=\"ltr\">\r\n" + 
+				"  <head>\r\n" + 
+				"    <meta charset=\"utf-8\">\r\n" + 
+				"    <title>Pong</title>\r\n" + 
+				"  </head>\r\n" + 
+				"  <body>");
+		write.write(toHTMLTable());
+		write.write("</body>\r\n" + 
+				"</html>");
+		write.close();
+	}
+}

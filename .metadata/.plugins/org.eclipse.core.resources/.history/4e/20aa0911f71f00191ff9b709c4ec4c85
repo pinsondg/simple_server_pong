@@ -1,0 +1,21 @@
+
+
+public class PostEvent {
+	
+	private String message;
+	private String fileRequest;
+	
+	public PostEvent(String message, String fileRequest) {
+		this.message = message;
+		this.fileRequest = fileRequest;
+	}
+	
+	public String getMessage() {
+		return message;
+	}
+	
+	public String getFileRequest() {
+		return fileRequest;
+	}
+	
+}

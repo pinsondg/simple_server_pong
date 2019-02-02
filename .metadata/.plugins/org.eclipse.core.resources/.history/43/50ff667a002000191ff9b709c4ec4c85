@@ -1,0 +1,19 @@
+package controller;
+
+import java.io.IOException;
+
+import model.SimpleServer;
+import model.WinnerBoard;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		SimpleServer server1 = new SimpleServer(8080);
+		SimpleServer server2 = new SimpleServer(80);
+		server1.startServer("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\layout.html");
+		server2.startServer("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\script.js");
+		WinnerBoard winnerBoard = new WinnerBoard();
+		server1.addPostEventListener(winnerBoard);
+		
+	}
+}

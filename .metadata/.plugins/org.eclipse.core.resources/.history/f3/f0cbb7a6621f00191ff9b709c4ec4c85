@@ -1,0 +1,15 @@
+package controller;
+
+import java.io.IOException;
+
+import model.SimpleServer;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		SimpleServer server1 = new SimpleServer(8080);
+		SimpleServer server2 = new SimpleServer(8081);
+		server1.startServer("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\layout.html");
+		server2.startServer("C:\\Users\\dpgra\\JavaScriptPractice\\Pong_Game\\script.js");
+	}
+}
