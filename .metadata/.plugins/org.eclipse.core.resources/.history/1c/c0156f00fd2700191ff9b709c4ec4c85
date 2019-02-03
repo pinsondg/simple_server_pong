@@ -16,12 +16,11 @@ import java.io.IOException;
 public class Installer {
 
 	public static void main(String[] args) throws IOException {
-		File file = new File(System.getProperty("user.home") + File.separator + ".bash_profile");
+		File file = new File("/.bash_profile");
 		File script = new File("bin/");
 		if(!file.exists()) {
 			file.createNewFile();
 		}
-		script.setExecutable(true, false);
 		System.out.println("Modifying file: " + file.getAbsolutePath());
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = reader.readLine();
