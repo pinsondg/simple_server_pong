@@ -16,14 +16,13 @@ import java.io.IOException;
 public class Installer {
 
 	public static void main(String[] args) throws IOException {
-		File file = new File("/.profile");
+		File file = new File(System.getProperty("user.home") + File.separator + ".profile");
 		File script = new File("bin/");
 		if (!file.exists()) {
 			if (file.createNewFile()) {
 				System.out.println("Created new file: " + file.getAbsolutePath());
 			} else {
 				System.out.println("Could not create file. Installation stopped.");
-				System.exit(0);
 			}
 		}
 		if (!file.canWrite()) {
