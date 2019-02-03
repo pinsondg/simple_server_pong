@@ -15,12 +15,11 @@ import model.WinnerBoard;
 
 public class Server {
 	
-	public static String SAVE_FILE_LEADERBOARD = "leaderboard.dat";
-	public static String HTML_FILE = "../src/front_end/layout.html";
-	public static String JAVASCRIPT_FILE = "../src/front_end/script.js";
+	public final static String SAVE_FILE_LEADERBOARD = "leaderboard.dat";
+	public final static String HTML_FILE = "src\\front_end\\layout.html";
+	public final static String JAVASCRIPT_FILE = "src\\front_end\\script.js";
 
 	public static void main(String[] args) throws IOException {
-		determineOS();
 		System.out.println("Use IPv4 address " + new String(findPublicIP()) + " to connect.");
 		SimpleServer server1 = new SimpleServer(8080);
 		SimpleServer server2 = new SimpleServer(80);
@@ -84,9 +83,7 @@ public class Server {
 	private static void determineOS() {
 		String osName = System.getProperty("os.name");
 		if (osName.contains("Windows")) {
-			SAVE_FILE_LEADERBOARD.replace('\\', '/');
-			HTML_FILE.replace('\\', '/');
-			JAVASCRIPT_FILE.replace('\\', '/');
+			
 		}
 	}
 }

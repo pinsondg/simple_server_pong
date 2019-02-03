@@ -16,8 +16,8 @@ import model.WinnerBoard;
 public class Server {
 	
 	public static String SAVE_FILE_LEADERBOARD = "leaderboard.dat";
-	public static String HTML_FILE = "../src/front_end/layout.html";
-	public static String JAVASCRIPT_FILE = "../src/front_end/script.js";
+	public static String HTML_FILE = "src/front_end/layout.html";
+	public static String JAVASCRIPT_FILE = "src/front_end/script.js";
 
 	public static void main(String[] args) throws IOException {
 		determineOS();
