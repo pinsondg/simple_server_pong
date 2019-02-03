@@ -20,7 +20,6 @@ public class Server {
 	public final static String JAVASCRIPT_FILE = "src\\front_end\\script.js";
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("Use IPv4 address " + new String(findPublicIP()) + " to connect.");
 		SimpleServer server1 = new SimpleServer(8080);
 		SimpleServer server2 = new SimpleServer(80);
 		modifyHTMLIP();

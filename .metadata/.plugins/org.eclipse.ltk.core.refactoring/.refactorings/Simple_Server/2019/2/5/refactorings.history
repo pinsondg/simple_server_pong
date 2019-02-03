@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;public static byte [] findPublicIP() throws MalformedURLException, IOException &apos; from &apos;controller.Server.modifyHTMLIP()&apos; to &apos;controller.Server&apos;&#x0D;&#x0A;- Original project: &apos;Simple_Server&apos;&#x0D;&#x0A;- Method name: &apos;findPublicIP&apos;&#x0D;&#x0A;- Destination type: &apos;controller.Server&apos;&#x0D;&#x0A;- Declared visibility: &apos;public&apos;" comments="false" description="Extract method &apos;findPublicIP&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;controller{Server.java" name="findPublicIP" replace="false" selection="1723 136" stamp="1549146968228" version="1.0" visibility="1"/>
+</session>

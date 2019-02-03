@@ -35,6 +35,7 @@ public class SimpleServer {
 	 * @throws UnknownHostException 
 	 */
 	public void startServer(String fileName) throws UnknownHostException {
+		System.out.println("IPv4 address: " + InetAddress.getLocalHost().getHostAddress());
 		System.out.println("Server started! Listening to requests on port " + port);
 		new Thread() {
 
