@@ -1,0 +1,11 @@
+package controller;
+
+/**
+ * Sets up the bash script for you.
+ * @author dpgra
+ *
+ */
+public class Installer {
+
+	
+}
