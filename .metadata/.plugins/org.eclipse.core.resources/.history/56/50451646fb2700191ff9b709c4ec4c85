@@ -32,6 +32,5 @@ public class Installer {
 		fileContents += "export PATH=\"$PATH:\"" + script.getAbsolutePath() + "\n";
 		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 		writer.write(fileContents);
-		writer.close();
 	}
 }
