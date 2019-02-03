@@ -25,17 +25,10 @@ public class Installer {
 				System.out.println("Could not create file. Installation stopped.");
 			}
 		}
-		if (script.isDirectory() && script.exists()) {
-			File[] scripts = script.listFiles();
-			for (File bashScript : scripts) {
-				if (!bashScript.isDirectory() && bashScript.setExecutable(true, false)) {
-					System.out.println("Set " + script.getAbsolutePath() + " to exicutible.");
-				} else if (!bashScript.isDirectory()){
-					System.out.println("Could not make " + script.getAbsolutePath() + " to exicutable. Use chmod 777 to set manually.");
-				}
+		if (script.exists()) {
+			if (script.setExecutable(true, false)) {
+				System.out.println("Set " + script.getAbsolutePath() + " to exicutible.");
 			}
-		} else {
-			System.out.println("Couldn't find basch script");
 		}
 		System.out.println("Modifying file: " + file.getAbsolutePath());
 		BufferedReader reader = new BufferedReader(new FileReader(file));

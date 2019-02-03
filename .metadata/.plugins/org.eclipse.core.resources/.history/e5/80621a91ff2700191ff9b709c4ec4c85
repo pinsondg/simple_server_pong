@@ -30,7 +30,7 @@ public class Installer {
 			for (File bashScript : scripts) {
 				if (!bashScript.isDirectory() && bashScript.setExecutable(true, false)) {
 					System.out.println("Set " + script.getAbsolutePath() + " to exicutible.");
-				} else if (!bashScript.isDirectory()){
+				} else {
 					System.out.println("Could not make " + script.getAbsolutePath() + " to exicutable. Use chmod 777 to set manually.");
 				}
 			}

@@ -26,13 +26,10 @@ public class Installer {
 			}
 		}
 		if (script.isDirectory() && script.exists()) {
-			File[] scripts = script.listFiles();
-			for (File bashScript : scripts) {
-				if (!bashScript.isDirectory() && bashScript.setExecutable(true, false)) {
-					System.out.println("Set " + script.getAbsolutePath() + " to exicutible.");
-				} else if (!bashScript.isDirectory()){
-					System.out.println("Could not make " + script.getAbsolutePath() + " to exicutable. Use chmod 777 to set manually.");
-				}
+			if (script.setExecutable(true, false)) {
+				System.out.println("Set " + script.getAbsolutePath() + " to exicutible.");
+			} else {
+				System.out.println("Could not make " + script.getAbsolutePath() + " to exicutable. Use chmod 777 to set manually.");
 			}
 		} else {
 			System.out.println("Couldn't find basch script");

@@ -18,30 +18,15 @@ public class Installer {
 	public static void main(String[] args) throws IOException {
 		File file = new File(System.getProperty("user.home") + File.separator + ".bash_profile");
 		File script = new File("bin/");
-		if (!file.exists()) {
-			if (file.createNewFile()) {
-				System.out.println("Created new file: " + file.getAbsolutePath());
-			} else {
-				System.out.println("Could not create file. Installation stopped.");
-			}
+		if(!file.exists()) {
+			file.createNewFile();
 		}
-		if (script.isDirectory() && script.exists()) {
-			File[] scripts = script.listFiles();
-			for (File bashScript : scripts) {
-				if (!bashScript.isDirectory() && bashScript.setExecutable(true, false)) {
-					System.out.println("Set " + script.getAbsolutePath() + " to exicutible.");
-				} else if (!bashScript.isDirectory()){
-					System.out.println("Could not make " + script.getAbsolutePath() + " to exicutable. Use chmod 777 to set manually.");
-				}
-			}
-		} else {
-			System.out.println("Couldn't find basch script");
-		}
+		script.setExecutable(true, false);
 		System.out.println("Modifying file: " + file.getAbsolutePath());
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = reader.readLine();
 		String fileContents = "";
-		while (line != null) {
+		while(line != null) {
 			fileContents += line + "\n";
 			line = reader.readLine();
 		}
