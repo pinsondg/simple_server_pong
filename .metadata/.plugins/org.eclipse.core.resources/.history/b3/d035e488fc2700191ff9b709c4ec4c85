@@ -21,7 +21,6 @@ public class Installer {
 		if(!file.exists()) {
 			file.createNewFile();
 		}
-		System.out.println("Modifying file: " + file.getAbsolutePath());
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String line = reader.readLine();
 		String fileContents = "";
