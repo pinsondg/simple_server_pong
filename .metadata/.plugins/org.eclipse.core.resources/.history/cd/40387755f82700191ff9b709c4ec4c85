@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 
 import model.SimpleServer;
 import model.WinnerBoard;
@@ -79,8 +78,8 @@ public class Server {
 	public static byte[] findPublicIP() throws MalformedURLException, IOException {
 		URL publicIP = new URL("http://bot.whatismyipaddress.com");
 	    byte[] bytes = new byte[225];
-	    int n = publicIP.openStream().read(bytes);
-	    return Arrays.copyOf(bytes, n);
+	    publicIP.openStream().read(bytes);
+		return bytes;
 	}
 	
 	private static void determineOS() {
