@@ -10,7 +10,7 @@ jobs:
   pool:
     vmImage: 'Ubuntu-16.04'
   steps:
-    - script: apt-get install java-jdk
+    - script: echo built
 
 
 - job: 'Test'
