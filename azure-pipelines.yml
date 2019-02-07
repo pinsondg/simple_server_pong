@@ -19,7 +19,7 @@ jobs:
     vmImage: 'Ubuntu-16.04'
   dependsOn: build
   steps:
-    script |
+    - script: |
     cd Simple_Server/src/tests/
     javac TestWinnerBored.java
     java TestWinnerBored.class
