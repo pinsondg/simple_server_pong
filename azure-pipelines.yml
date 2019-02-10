@@ -20,7 +20,24 @@ jobs:
   dependsOn: build
   steps:
     - script: |
+        apt-get update
+        apt-get install java-jdk
         cd Simple_Server/src/tests/
         javac TestWinnerBored.java
         java TestWinnerBored.class
-        rm TestWinnerBored.class
+
+
+- job: 'Deploy'
+  displayName: 'Deploy'
+  pool:
+    vmImage: ubuntu-16.04
+  dependsOn: build
+  steps:
+    # Download Secure File
+    # Download a secure file to a temporary location on the build or release agent
+    - task: DownloadSecureFile@1
+      inputs:
+          secureFile: pong_server_keys.pem
+    - script: |
+        scp -i pong_server_keys . ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com:~/programs
+        
