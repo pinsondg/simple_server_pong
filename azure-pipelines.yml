@@ -31,7 +31,7 @@ jobs:
   displayName: 'Deploy'
   pool:
     vmImage: ubuntu-16.04
-  dependsOn: build
+  #dependsOn: build
   steps:
     - task: DownloadSecureFile@1
       inputs:
