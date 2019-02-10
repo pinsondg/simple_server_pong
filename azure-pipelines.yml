@@ -38,13 +38,13 @@ jobs:
     #    hostName: ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com
     #    sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCQsu5pTAqUNVIGu7++i9+XE/F1O311pygc6WAUB7Xkmk74QkquIjrp03wVR7OpyVSWbUjLxGHNLIbr+/lFEXz4P5zosqU8Go5MoQ1XAxDLHlF2RHxJq3WqLUSZBDdRrPgqxdRL1530MQ402t5jrT8EtRjebb52bbTfmGqdLWMz6RggOE+se8moB3S7wVJh9uMANVtE3DkST4MwJQKH0opnXP88SyMP++eDb4JEDqb/fqcRHhkYa5loh4LUzFAvjF4SdzEoXDR6VhYP7IY6AY5w8HZke3C6fsH7uSSWewBqLkzu2Yxti0wrr/vAf4qNMoSmjO+v+6HU2e/esVpmGI7L imported-openssh-key
     #    sshKeySecureFile: pong_server_keys.pem
-    - task: CopyFilesOverSSH@0
-      inputs:
-        sshEndpoint: 3.16.136.126
-        contents: '**' 
-        targetFolder: ~/programs
-        overwrite: true
+    #- task: CopyFilesOverSSH@0
+    #  inputs:
+    #    sshEndpoint: ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com
+    #    contents: '**' 
+    #    targetFolder: ~/programs
+    #    overwrite: true
     
-    #- script: |
-     #   scp -i "$(Agent.TempDirectory)/pong_server_keys.pem" -r $(Build.SourcesDirectory) ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com:programs/
+    - script: |
+        scp -i "$(Agent.TempDirectory)/pong_server_keys.pem" -r $(Build.SourcesDirectory) ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com:programs/
         
