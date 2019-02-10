@@ -40,7 +40,7 @@ jobs:
     #    sshKeySecureFile: pong_server_keys.pem
     - task: CopyFilesOverSSH@0
       inputs:
-        sshEndpoint: ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com
+        sshEndpoint: 3.16.136.126
         contents: '**' 
         targetFolder: ~/programs
         overwrite: true
