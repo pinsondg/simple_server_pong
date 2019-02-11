@@ -45,7 +45,7 @@ jobs:
       inputs:
         sshEndpoint: AWS
         contents: '**' 
-        targetFolder: ~/programs/simple_server_pong
+        targetFolder: ~/programs/
         overwrite: true
     # - script: |
     #   scp -i "$(Agent.TempDirectory)/pong_server_keys.pem" -r $(Build.SourcesDirectory) ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com:programs/
