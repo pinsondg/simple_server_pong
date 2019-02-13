@@ -14,10 +14,11 @@ import model.SimpleServer;
 import model.WinnerBoard;
 
 public class Server {
-	
-	public static String SAVE_FILE_LEADERBOARD = "leaderboard.dat";
-	public static String HTML_FILE = "src/front_end/layout.html";
-	public static String JAVASCRIPT_FILE = "src/front_end/script.js";
+
+	public static final String PROJECT_ROOT = new File("/../../").getAbsolutePath();
+	public static String SAVE_FILE_LEADERBOARD = PROJECT_ROOT + "leaderboard.dat";
+	public static String HTML_FILE = PROJECT_ROOT + "src/front_end/layout.html";
+	public static String JAVASCRIPT_FILE = PROJECT_ROOT + "src/front_end/script.js";
 
 	public static void main(String[] args) throws IOException {
 		determineOS();
