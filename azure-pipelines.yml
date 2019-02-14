@@ -48,7 +48,7 @@ jobs:
         inline: |
           cd programs/simple_server/
           git pull origin master
-          cd SimpleServer/bin/
+          cd Simple_Server/bin/
           java -cp . controller.Installer
     #- task: CopyFilesOverSSH@0
     #  inputs:
