@@ -15,13 +15,16 @@ import model.WinnerBoard;
 
 public class Server {
 
-	public static final String PROJECT_ROOT = findProjectPath();
-	public static String SAVE_FILE_LEADERBOARD = PROJECT_ROOT + "/leaderboard.dat";
-	public static String HTML_FILE = PROJECT_ROOT + "/src/front_end/layout.html";
-	public static String JAVASCRIPT_FILE = PROJECT_ROOT + "/src/front_end/script.js";
+	public static String SAVE_FILE_LEADERBOARD;
+	public static String HTML_FILE;
+	public static String JAVASCRIPT_FILE;
 
 	public static void main(String[] args) throws IOException {
 		determineOS();
+		String projectRoot = findProjectPath();
+		SAVE_FILE_LEADERBOARD = projectRoot + "/leaderboard.dat";
+		HTML_FILE = projectRoot + "/src/front_end/layout.html";
+		JAVASCRIPT_FILE = projectRoot + "/src/front_end/script.js";
 		System.out.println(System.getProperty("user.dir"));
 		System.out.println("Use IPv4 address " + new String(findPublicIP()) + " to connect.");
 		SimpleServer server1 = new SimpleServer(8080);
