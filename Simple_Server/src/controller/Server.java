@@ -22,10 +22,11 @@ public class Server {
 	public static void main(String[] args) throws IOException {
 		determineOS();
 		String projectRoot = findProjectPath();
-		SAVE_FILE_LEADERBOARD = projectRoot + "/leaderboard.dat";
-		HTML_FILE = projectRoot + "/src/front_end/layout.html";
-		JAVASCRIPT_FILE = projectRoot + "/src/front_end/script.js";
-		System.out.println(System.getProperty("user.dir"));
+		System.out.println(projectRoot);
+		SAVE_FILE_LEADERBOARD = projectRoot + "leaderboard.dat";
+		HTML_FILE = projectRoot + "src/front_end/layout.html";
+		JAVASCRIPT_FILE = projectRoot + "src/front_end/script.js";
+		//System.out.println(System.getProperty("user.dir"));
 		System.out.println("Use IPv4 address " + new String(findPublicIP()) + " to connect.");
 		SimpleServer server1 = new SimpleServer(8080);
 		SimpleServer server2 = new SimpleServer(80);
