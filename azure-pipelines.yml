@@ -47,7 +47,7 @@ jobs:
         runOptions: 'inline'
         inline: |
           cd programs/simple_server
-          git pull
+          git pull origin master
     #- task: CopyFilesOverSSH@0
     #  inputs:
     #    sshEndpoint: AWS
