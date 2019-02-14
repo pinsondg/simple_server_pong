@@ -68,7 +68,7 @@ public class Installer {
 		String retPath = "";
 		for (String dir : dirs) {
 			retPath += dir + File.pathSeparator;
-			if (dir.equals("Simple_Server")) {
+			if (dir.contains("Simple_Server")) {
 				return retPath;
 			}
 		}
