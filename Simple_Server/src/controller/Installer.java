@@ -16,8 +16,11 @@ import java.io.IOException;
 public class Installer {
 
 	public static void main(String[] args) throws IOException {
+		String projectPath = findProjectPath();
+		System.out.println(projectPath);
 		File file = new File("~/.profile");
-		File script = new File("bin/");
+		System.out.println(file.getAbsolutePath());
+		File script = new File(projectPath + "bin/");
 		if (!file.exists()) {
 			if (file.createNewFile()) {
 				System.out.println("Created new file: " + file.getAbsolutePath());
@@ -56,5 +59,19 @@ public class Installer {
 		writer.write(fileContents);
 		writer.close();
 		Runtime.getRuntime().exec("sudo . ~/.bashrc");
+	}
+
+	private static String findProjectPath() {
+		File file = new File(".");
+		String currDirName = file.getAbsolutePath();
+		String[] dirs = currDirName.split(File.pathSeparator);
+		String retPath = "";
+		for (String dir : dirs) {
+			retPath += dir + File.pathSeparator;
+			if (dir.equals("Simple_Server")) {
+				return retPath;
+			}
+		}
+		return retPath;
 	}
 }
