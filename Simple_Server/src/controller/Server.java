@@ -15,7 +15,7 @@ import model.WinnerBoard;
 
 public class Server {
 
-	public static final String PROJECT_ROOT = new File("/../../").getAbsolutePath();
+	public static final String PROJECT_ROOT = findProjectPath();
 	public static String SAVE_FILE_LEADERBOARD = PROJECT_ROOT + "/leaderboard.dat";
 	public static String HTML_FILE = PROJECT_ROOT + "/src/front_end/layout.html";
 	public static String JAVASCRIPT_FILE = PROJECT_ROOT + "/src/front_end/script.js";
@@ -90,5 +90,19 @@ public class Server {
 			HTML_FILE.replace('\\', '/');
 			JAVASCRIPT_FILE.replace('\\', '/');
 		}
+	}
+
+	private static String findProjectPath() {
+		File file = new File(".");
+		String currDirName = file.getAbsolutePath();
+		String[] dirs = currDirName.split(File.pathSeparator);
+		String retPath = "";
+		for (String dir : dirs) {
+			retPath += dir + File.pathSeparator;
+			if (dir.contains("Simple_Server")) {
+				return retPath;
+			}
+		}
+		return retPath;
 	}
 }
