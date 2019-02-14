@@ -47,7 +47,7 @@ jobs:
     #    contents: '**'
     #    targetFolder: ~/programs/simple_server
     #    overwrite: true
-     - script: |
-        ssh -i "$(Agent.TempDirectory)/pong_server_keys.pem" ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com
-        cd programs/simple_server/
-        git pull
+    - script: |
+         ssh -i "$(Agent.TempDirectory)/pong_server_keys.pem" ubuntu@ec2-18-219-148-13.us-east-2.compute.amazonaws.com
+         cd programs/simple_server/
+         git pull
