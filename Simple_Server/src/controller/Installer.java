@@ -64,10 +64,10 @@ public class Installer {
 	private static String findProjectPath() {
 		File file = new File(".");
 		String currDirName = file.getAbsolutePath();
-		String[] dirs = currDirName.split(File.pathSeparator);
+		String[] dirs = currDirName.split(File.separator);
 		String retPath = "";
 		for (String dir : dirs) {
-			retPath += dir + File.pathSeparator;
+			retPath += dir + File.separator;
 			if (dir.contains("Simple_Server")) {
 				return retPath;
 			}
